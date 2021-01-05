@@ -3,21 +3,16 @@ language: node_js
 node_js:
   - 10 # use nodejs v10 LTS
 cache: npm
-git:
-    submodules: false
 branches:
   only:
-    - main # build master branch only
-install:
-  - npm install
+    - master # build master branch only
 script:
-  - hexo clean # hexo clean db.json
   - hexo generate # generate static files
 deploy:
   provider: pages
-  # skip-cleanup: true
+  skip-cleanup: true
   github-token: $GH_TOKEN
   keep-history: true
   on:
-    branch: main
+    branch: master
   local-dir: public
