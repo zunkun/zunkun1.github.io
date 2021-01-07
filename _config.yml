@@ -62,4 +62,8 @@ exclude: null
 ignore: null
 theme: icarus
 deploy:
-  type: ''
+  type: git
+  repo: https://github.com/zunkun/zunkun.github.io.git
+  branch: gh_page
+  message: hexo commit
+

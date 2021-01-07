@@ -29,7 +29,7 @@ class Footer extends Component {
         return <footer class="footer">
             <div class="container">
                 {footerLogo} {siteYear} &copy;
-                <a href="http://beian.miit.gov.cn/" target="_blank">豫ICP备20003453号-1</a>
+                <a href="https://beian.miit.gov.cn" target="_blank">豫ICP备20003453号-1</a>
             </div>
         </footer>;
     }
