@@ -29,9 +29,11 @@ module.exports = class extends Component {
         };`;
 
         return <Fragment>
-            <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
-            {clipboard && <script src={cdn('clipboard', '2.0.4', 'dist/clipboard.min.js')} async></script>}
-            <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>
+            <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+            {clipboard && <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>}
+
+            <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
             <script src={url_for('/js/column.js')}></script>
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={url_for('/js/main.js')} defer></script>

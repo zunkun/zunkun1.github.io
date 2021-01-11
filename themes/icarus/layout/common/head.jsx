@@ -50,10 +50,10 @@ module.exports = class extends Component {
         } = head;
 
         const language = page.lang || page.language || config.language;
-        const fontCssUrl = {
-            // default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
-            // cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono', 'css2')
-        };
+        // const fontCssUrl = {
+        //     // default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
+        //     // cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono', 'css2')
+        // };
 
         let hlTheme, images;
         if (highlight && highlight.enable === false) {
@@ -153,13 +153,10 @@ module.exports = class extends Component {
             {rss ? <link rel="alternate" href={url_for(rss)} title={config.title} type="application/atom+xml" /> : null}
             {favicon ? <link rel="icon" href={url_for(favicon)} /> : null}
             <link rel="stylesheet" href={iconcdn()} />
-            {hlTheme ? <link rel="stylesheet" href={cdn('highlight.js', '9.12.0', 'styles/' + hlTheme + '.css')} /> : null}
+            {hlTheme ? <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.4.1/styles/atom-one-light.min.css" rel="stylesheet"></link> : null}
             {/* <link rel="stylesheet" href={fontCssUrl[variant]} /> */}
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-
-            {adsenseClientId ? <script data-ad-client={adsenseClientId}
-                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async></script> : null}
         </head>;
     }
 };
