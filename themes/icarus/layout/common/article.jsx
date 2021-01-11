@@ -1,4 +1,3 @@
-const moment = require('moment');
 const { Component, Fragment } = require('inferno');
 const Share = require('./share');
 const Donates = require('./donates');
@@ -69,8 +68,7 @@ module.exports = class extends Component {
                             {article && article.readtime && article.readtime === true ? <span class="level-item">
                                 {(() => {
                                     const words = getWordCount(page._content);
-                                    const time = moment.duration((words / 150.0) * 60, 'seconds');
-                                    return `${_p('article.read_time', time.locale(index ? indexLaunguage : language).humanize())} (${_p('article.word_count', words)})`;
+                                    return `(${_p('article.word_count', words)})`;
                                 })()}
                             </span> : null}
                             {/* Visitor counter */}

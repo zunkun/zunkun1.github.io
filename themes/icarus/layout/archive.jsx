@@ -1,4 +1,3 @@
-const moment = require('moment');
 const { Component, Fragment } = require('inferno');
 const Paginator = require('hexo-component-inferno/lib/view/misc/paginator');
 const ArticleMedia = require('hexo-component-inferno/lib/view/common/article_media');
@@ -8,14 +7,19 @@ module.exports = class extends Component {
         const { config, page, helper } = this.props;
         const { url_for, __, date_xml, date } = helper;
 
-        const language = page.lang || page.language || config.language;
-
         function renderArticleList(posts, year, month = null) {
-            const time = moment([page.year, page.month ? page.month - 1 : null].filter(i => i !== null));
+            const time = new Date();
+            time.setFullYear(page.year);
+            if (page.month) {
+                time.setMonth(page.month - 1);
+            }
+            let month2 = time.getMonth() + 1;
+            month2 = month2 >= 10 ? month2 : `0${month2}`;
+            const timeformat = `${time.getFullYear()}年${month2}月`;
 
             return <div class="card">
                 <div class="card-content">
-                    <h3 class="tag is-primary">{month === null ? year : time.locale(language).format('MMMM YYYY')}</h3>
+                    <h3 class="tag is-primary">{month === null ? year : timeformat}</h3>
                     <div class="timeline">
                         {posts.map(post => {
                             const categories = post.categories.map(category => ({

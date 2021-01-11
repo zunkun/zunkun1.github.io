@@ -38,7 +38,6 @@
     "hexo-component-inferno": "^0.10.1",
     "inferno": "^7.3.3",
     "inferno-create-element": "^7.3.3",
-    "moment": "^2.22.2",
     "semver": ">=5.0.0"
   },
   "peerDependencies": {

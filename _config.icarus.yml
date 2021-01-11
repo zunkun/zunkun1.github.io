@@ -145,28 +145,10 @@ search:
     type: insight
 # Comment plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Comment/
-comment:
-    type: changyan
-    app_id: cyveEO28s
-    conf: prod_4922652855aba80cd9c76099ae37574b
 # Donate plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
-donates:
-    -
-        type: alipay
-        # Alipay qrcode image URL
-        qrcode: '/img/alipay.jpg'
-    # "Buy me a coffee" donate button configurations
-
-    -
-        type: wechat
-        # Wechat qrcode image URL
-        qrcode: '/img/wxpay.jpg'
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
-share:
-    type: bdshare
-# Sidebar configurations.
 # Please be noted that a sidebar is only visible when it has at least one widget
 sidebar:
     # Left sidebar configurations
@@ -249,79 +231,6 @@ widgets:
 
 # Plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/
-plugins:
-    # Enable page startup animations
-    animejs: true
-    # Show the "back to top" button
-    back_to_top: true
-    # Baidu Analytics plugin settings
-    # https://tongji.baidu.com
-    baidu_analytics:
-        # Baidu Analytics tracking ID
-        tracking_id: 13bd9bcb67a0bfe48dca4ceac5239419
-    # Bing Webmaster Tools plugin settings
-    # https://www.bing.com/toolbox/webmaster/
-    bing_webmaster:
-        # Bing Webmaster Tools tracking ID in the <meta> tag
-        tracking_id: 
-    # BuSuanZi site/page view counter
-    # https://busuanzi.ibruce.info
-    busuanzi: false
-    # CNZZ statistics
-    # https://www.umeng.com/web
-    cnzz:
-        # CNZZ tracker id
-        id: 
-        # CNZZ website id
-        web_id: 
-    # Alerting users about the use of cookies
-    # https://www.osano.com/cookieconsent/
-    # cookie_consent:
-    #     # The compliance type. Can be "info", "opt-in", or "opt-out"
-    #     type: info
-    #     # Theme of the popup. Can be "block", "edgeless", or "classic"
-    #     theme: edgeless
-    #     # Whether the popup should stay static regardless of the page scrolls
-    #     static: false
-    #     # Where on the screen the consent popup should display
-    #     position: bottom-left
-    #     # URL to your site's cookie policy
-    #     policyLink: 'https://www.cookiesandyou.com/'
-    # Enable the lightGallery and Justified Gallery plugins
-    gallery: true
-    # Google Analytics plugin settings
-    # https://analytics.google.com
-    google_analytics:
-        # Google Analytics tracking ID
-        tracking_id: 
-    # Hotjar user feedback plugin
-    # https://www.hotjar.com/
-    hotjar:
-        # Hotjar site id
-        site_id: 
-    # Enable the KaTeX math typesetting support
-    # https://katex.org/
-    katex: false
-    # Enable the MathJax math typesetting support
-    # https://www.mathjax.org/
-    mathjax: false
-    # Enable the Outdated Browser plugin
-    # http://outdatedbrowser.com/
-    outdated_browser: true
-    # Show a progress bar at top of the page on page loading
-    progressbar: true
-    # Statcounter statistics
-    # https://statcounter.com/
-    statcounter:
-        # Statcounter project id
-        project: 
-        # Statcounter project security code
-        security: 
-    # Twitter conversion tracking plugin settings
-    # https://business.twitter.com/en/help/campaign-measurement-and-analytics/conversion-tracking-for-websites.html
-    twitter_conversion_tracking:
-        # Twitter Pixel ID
-        pixel_id: 
 # CDN provider settings
 # https://ppoffice.github.io/hexo-theme-icarus/Configuration/Theme/speed-up-your-site-with-custom-cdn/
 providers:

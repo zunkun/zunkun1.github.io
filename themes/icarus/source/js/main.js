@@ -1,5 +1,72 @@
 /* eslint-disable node/no-unsupported-features/node-builtins */
-(function($, moment, ClipboardJS, config) {
+function fromNow(time) {
+    // 支持传入10位或13位毫秒数，如 1587367194536,"1587367194"
+    // 支持传入日期格式，如 "2020/4/20 15:31:18"
+
+    if (typeof time === 'number' || Number(time) === time) {
+        if (String(time).length === 10) {
+            time = Number(time) * 1000;
+        } else if (String(time).length === 13) {
+            time = Number(time);
+        } else {
+            console.log('时间格式错误');
+            return time;
+        }
+    } else {
+        if (typeof time === 'string' && time.split(' ').length === 2 && time.split(/[- : \/]/).length === 6) {
+            time = new Date(time.replace(/\-/g, '/')).getTime();
+        } else {
+            console.log('时间格式错误');
+            return time;
+        }
+    }
+    // 处理之后的time为13位数字格式的毫秒数
+
+    const date_now = new Date();
+    const date_time = new Date(time);
+    const distance = date_now.getTime() - time;
+
+    const days = parseInt(distance / (1000 * 60 * 60 * 24), 10);
+    if (days === 1) {
+        return '昨天';
+    } else if (days > 1 && days < 4) {
+        return days + '天前';
+    } else if (days > 3) {
+        // 超过3天的，返回日期，如 2018-12-05
+        // 如果是今年的，就省去年份，返回 12-05
+        const year = date_time.getFullYear();
+        let month = date_time.getMonth() + 1;
+        const _month = month;
+        if (month < 10) {
+            month = '0' + month;
+        }
+        let day = date_time.getDate();
+        const _day = day;
+        if (day < 10) {
+            day = '0' + day;
+        }
+        if (date_now.getFullYear() === year) {
+            return `${_month}月${_day}日`;
+        }
+        return `${year}${month}月${day}日`;
+
+    }
+
+    const hours = parseInt((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60), 10);
+    if (hours > 0) {
+        return hours + '小时前';
+    }
+
+    const minutes = parseInt((distance % (1000 * 60 * 60)) / (1000 * 60), 10);
+    if (minutes > 0) {
+        return minutes + '分钟前';
+    }
+
+    return '刚刚';
+}
+
+
+(function($, ClipboardJS, config) {
     $('.article img:not(".not-gallery-item")').each(function() {
         // wrap images with link and add caption if possible
         if ($(this).parent('a').length === 0) {
@@ -20,11 +87,12 @@
         $('.justified-gallery').justifiedGallery();
     }
 
-    if (typeof moment === 'function') {
-        $('.article-meta time').each(function() {
-            $(this).text(moment($(this).attr('datetime')).fromNow());
-        });
-    }
+    $('.article-meta time').each(function() {
+        let datetime = $(this).attr('datetime');
+        datetime = new Date(datetime).getTime();
+        console.log(222222, datetime, typeof datetime, fromNow(datetime));
+        $(this).text(fromNow(datetime));
+    });
 
     $('.article > .content > table').each(function() {
         if ($(this).width() > $(this).parent().width()) {
@@ -134,4 +202,4 @@
         $mask.on('click', toggleToc);
         $('.navbar-main .catalogue').on('click', toggleToc);
     }
-}(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings));
+}(jQuery, window.ClipboardJS, window.IcarusThemeSettings));
