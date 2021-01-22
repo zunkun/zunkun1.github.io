@@ -64,6 +64,6 @@ theme: icarus
 deploy:
   type: git
   repo: https://github.com/zunkun/zunkun.github.io.git
-  branch: gh_page
-  message: hexo commit
-
+  branch: docs
+  message: 提交更新
+all_minifier: true
