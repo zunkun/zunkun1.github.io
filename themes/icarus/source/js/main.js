@@ -90,7 +90,6 @@ function fromNow(time) {
     $('.article-meta time').each(function() {
         let datetime = $(this).attr('datetime');
         datetime = new Date(datetime).getTime();
-        console.log(222222, datetime, typeof datetime, fromNow(datetime));
         $(this).text(fromNow(datetime));
     });
 
