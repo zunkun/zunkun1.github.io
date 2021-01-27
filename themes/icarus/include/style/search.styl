@@ -2,9 +2,9 @@
  *           Search Box
  * --------------------------------- */
 // container sizes
-$searchbox-container-width ?= 540px
+$searchbox-container-width ?= 1024px
 $searchbox-container-margin ?= 100px
-$searchbox-breakpoint-width ?= 559px
+$searchbox-breakpoint-width ?= 800px
 $searchbox-breakpoint-height ?= 479px
 // overlay and container styles
 $searchbox-box-shadow ?= $card-shadow
@@ -142,6 +142,12 @@ $searchbox-bg-pagination-item-disabled ?= $searchbox-bg-container
 
     .searchbox-result-content
         overflow: hidden
+    .searchbox-result-content, .fa-file:before
+        content: none
+    .searchbox-result-content, .fa-tag:before
+        content: none
+    .searchbox-result-content, .fa-folder:before
+        content: none
 
     .searchbox-result-title, .searchbox-result-preview
         display: block
