@@ -165,7 +165,7 @@ widgets:
     # Profile widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: right
+        position: left
         type: profile
         # Author name
         author: 得时
@@ -192,7 +192,7 @@ widgets:
     # Table of contents widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
-        position: right
+        position: left
         type: toc
         # Whether to show the index of each heading
         index: true
@@ -209,25 +209,25 @@ widgets:
         # links:
         #     得时: 'https://xydsinfo.cn'
     # Categories widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: categories
+    # -
+    #     # Where should the widget be placed, left sidebar or right sidebar
+    #     position: left
+    #     type: categories
     # Recent posts widget configurations
     -
         # Where should the widget be placed, left sidebar or right sidebar
         position: left
         type: recent_posts
     # Archives widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: archives
+    # -
+    #     # Where should the widget be placed, left sidebar or right sidebar
+    #     position: left
+    #     type: archives
     # Tags widget configurations
-    -
-        # Where should the widget be placed, left sidebar or right sidebar
-        position: left
-        type: tags
+    # -
+    #     # Where should the widget be placed, left sidebar or right sidebar
+    #     position: left
+    #     type: tags
 
 # Plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/
@@ -237,6 +237,6 @@ providers:
     # Name or URL template of the JavaScript and/or stylesheet CDN provider
     cdn: 'https://cdn.bootcdn.net/ajax/libs/${package}/${version}/${filename}'
     # Name or URL template of the webfont CDN provider
-    fontcdn: 'https://cdn.bootcdn.net/ajax/libs/${package}/${version}/${filename}'
+    # fontcdn: 'https://cdn.bootcdn.net/ajax/libs/${package}/${version}/${filename}'
     # Name or URL of the fontawesome icon font CDN provider
     iconcdn: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.2/css/all.min.css'

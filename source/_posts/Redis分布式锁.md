@@ -2,6 +2,7 @@
 title: Redis分布式锁
 date: 2021-01-27 20:35:45
 toc: true
+profile: false
 categories:
 - 知识学习
 - 技术
@@ -13,9 +14,11 @@ tags:
 Redis 对资源加锁，使用 `setnx` 指令，表示 `set if not exists`,比如 `setnx lock:key 200` ，就对 `lock:key` 加锁了。
 
 <!-- more -->
+
 ### 过期时间
 setnx 对资源已经加锁，如果不执行 `del` 命令，则资源不会释放，会陷入死锁，解决办法是对锁资源加上过期时间
-```
+
+``` bash
 expire lock:key 5 # 表示资源过期时间为5s
 ```
 
@@ -23,13 +26,14 @@ expire lock:key 5 # 表示资源过期时间为5s
 
 ### Redis方案
 官方方案原子操作
-```
+
+``` bash
 set lock:key 200 ex 5 nx
 
 ```
 其中nodejs 方案 
 
-```
+``` javascript
 const Redis = require('ioredis');
 const redis = new Redis({
   port: 6379, // Redis port
@@ -49,7 +53,7 @@ redis.set('lock:key', 200, 'EX', 10, 'NX');
 ### 解决方案
 可以设置 `lock:key` 的 value 值为独有的值，当要删除的 value 与 redis中的 value 一致时，才允许删除操作
 
-```
+``` javascript
 let tag = Math.floor(Math.random() * 1000);
 
 redis.set(`lock:key`, tag, 'EX', 10, 'NX')
@@ -61,11 +65,10 @@ let value = redis.get(`lock:key`)
 
 if(value ==== tag) redis.del(`lock:key`)
 
-
 ```
 注意，上面的操作也不是原子性的，需要使用Lua 脚本来执行操作
 
-```
+``` javascript
 
 const script = `if redis.call("get", KEYS[1] == ARGV[1] then 
     return redis.call("del", KEYS[1]))
@@ -74,8 +77,8 @@ const script = `if redis.call("get", KEYS[1] == ARGV[1] then
     end`;
 redis.eval(script, 1, `lock:key`, tag);
 
-执行上面的代码来释放锁
 ```
+执行上面的代码来释放锁
 
 
 ## 代码
@@ -159,6 +162,5 @@ async function testlock(name) {
 
 testlock('name1');
 testlock('name2');
-
 
 ```

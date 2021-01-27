@@ -1,6 +1,5 @@
 const { Component, Fragment } = require('inferno');
 const Plugins = require('./plugins');
-
 module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
@@ -34,6 +33,7 @@ module.exports = class extends Component {
             {clipboard && <script src="https://cdn.bootcdn.net/ajax/libs/clipboard.js/2.0.6/clipboard.min.js"></script>}
 
             <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
+            <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>
             <script src={url_for('/js/column.js')}></script>
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={url_for('/js/main.js')} defer></script>
